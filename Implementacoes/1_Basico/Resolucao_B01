@@ -1,0 +1,19 @@
+#L₁ = { w ∈ {0,1}* | w contém pelo menos um 1}
+
+input: '1'
+blank: '⊔'
+start state: q_0
+
+table:
+  # q_0 possui um laço para buscar 0's.
+  q_0:
+    # Permanece em q_0 enquanto tiver 0's e não acha um 1.
+    0: {R: q_0}
+    # Se achar um 1, pule para aceitação.
+    1: {R: q_aceita}
+    # Se achar um ⊔, percorreu toda a fita sem achar um, rejeite.
+    ⊔: {R: q_rejeita}
+    
+  q_aceita:
+  
+  q_rejeita:
