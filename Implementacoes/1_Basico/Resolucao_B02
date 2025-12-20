@@ -1,0 +1,25 @@
+#L₂ = { w ∈ {0,1}* | o número de 0s é par }
+
+input: '1110011011010110'
+blank: '⊔'
+start state: q_0
+
+table:
+  
+  # Estado para contagem atual par de 0's.
+  q_0:
+    0: {R: q_1}
+    1: {R: q_0}
+    # Vazio é aceito por vacuidade.
+    # Cadeias formadas apenas por 1's devem ser aceitas.
+    ⊔: {R: q_aceita}
+  
+  # Estado para contagem atual ímpar de 0's.
+  q_1:
+    0: {R: q_0}
+    1: {R: q_1}
+    ⊔: {R: q_rejeita}
+    
+  q_aceita:
+  
+  q_rejeita:
