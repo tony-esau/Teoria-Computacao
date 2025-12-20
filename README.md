@@ -65,3 +65,5 @@ MIT License
 ---
 
 ⭐ Se este repositório foi útil, considere dar uma estrela!
+
+Tony Esaú de Oliveira - Universidade Federal do Cariri 
