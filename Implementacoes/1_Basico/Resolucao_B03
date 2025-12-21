@@ -1,0 +1,40 @@
+#L₃ = { w ∈ {a,b}* | w começa e termina com o mesmo símbolo }
+
+input: 'abbbaabaabaa'
+blank: '⊔'
+start state: q_0
+
+table:
+  
+  # Estado inicial bifurca nas duas possibilidades de início de cadeia.
+  # Cadeia vazia não possui caracteres, rejeita.
+  q_0:
+    a: {R: q_1}
+    b: {R: q_2}
+    ⊔: {R: q_rejeita}
+    
+  # Estado de 'memória' para a, se bate no fim da fita volta ao último caractere para fazer comparação.
+  q_1:
+    a: {R: q_1}
+    b: {R: q_1}
+    ⊔: {L: q_comp_0}
+    
+  # Estado de 'memória' para b, se bate no fim da fita volta ao último caractere para fazer comparação.
+  q_2:
+    a: {R: q_2}
+    b: {R: q_2}
+    ⊔: {L: q_comp_1}
+    
+  # Compara leitura do último caractere com a, se for a aceita, caso contrário, rejeita.
+  q_comp_0:
+    a: {R: q_aceita}
+    b: {R: q_rejeita}
+  
+  # Compara leitura do último caractere com b, se for b, aceita, caso contrário, rejeita.
+  q_comp_1:
+    a: {R: q_rejeita}
+    b: {R: q_aceita}
+    
+  q_aceita:
+  
+  q_rejeita:
