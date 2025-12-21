@@ -1,0 +1,23 @@
+#L₄ = { w ∈ {a,b}* | |w| é par }
+
+input: 'ababaababba'
+blank: '⊔'
+start state: q_0
+
+table:
+  
+  # Estado para número par de caracteres lidos.
+  q_0:
+    a: {R: q_1}
+    b: {R: q_1}
+    ⊔: {R: q_aceita}
+    
+  # Estado para número ímpar de caracteres lidos.  
+  q_1:
+    a: {R: q_0}
+    b: {R: q_0}
+    ⊔: {R: q_rejeita}
+    
+  q_aceita:
+  
+  q_rejeita:
