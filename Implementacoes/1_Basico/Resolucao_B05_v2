@@ -1,5 +1,6 @@
 # L₅ = { 0ⁿ1ⁿ | n ≥ 0 }
-# Versão ingênuo para aceitar as cadeias da linguagem, e, se aceita, retornar ao estado inicial da fita.
+# Versão ingênuo para uma máquina que, além de aceitar as cadeias da linguagem, retorna ao estado inicial da fita (cadeia de entrada). 
+# Isso é útil quando, após aceitar uma cadeia, deseja-se realizar uma outra operação sobre ela.
 # Nos exercícios intermediários você aprenderá o 'shift' e isso se tornará bem mais simples e mecânico.
 
 input: '0011'
