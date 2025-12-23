@@ -1,0 +1,63 @@
+# L₅ = { 0ⁿ1ⁿ | n ≥ 0 }
+# Versão ingênuo para aceitar as cadeias da linguagem, e, se aceita, retornar ao estado inicial da fita.
+# Nos exercícios intermediários você aprenderá o 'shift' e isso se tornará bem mais simples e mecânico.
+
+input: '0011'
+blank: '⊔'
+start state: q_0
+
+table:
+
+  q_0:
+    0: {R: q_aux}
+    1: {R: q_rejeita}
+    ⊔: {R: q_aceita}
+    
+  q_aux:
+    0: {write: $, R: q_2}
+    1: {write: $, R: q_raux}
+    ⊔: {L: q_raux}
+    
+  q_raux:
+    ⊔: {L: q_raux}
+    $: {write: 1, L: q_aceita}
+    1 : {L: q_rejeita}
+    0: {L: q_rejeita}
+  
+  q_1: 
+    0: {write: ○, R: q_2}
+    $: {R: q_2}
+    '&': {R: q_1}
+    1: {R: q_rejeita}
+    × : {R: q_verifica}
+    ⊔: {R: q_aceita}
+  
+  q_2:
+    0: {R: q_2}
+    1: {write: ×, L: q_retorna}
+    × : {R: q_2}
+    ⊔: {R: q_rejeita}
+    
+  q_retorna:
+    0: {L: q_retorna}
+    1: {L: q_retorna}
+    ○: {R: q_1}
+    × : {L: q_retorna}
+    $ : {write: '&', R: q_2}
+    '&': {R: q_1}
+    
+  q_verifica:
+    1: {R: q_rejeita}
+    0: {R: q_rejeita}
+    × : {R: q_verifica}
+    ⊔: {L: q_t}
+
+  q_t:
+    ○: {write: 0, L: q_t}
+    ×: {write: 1, L: q_t}
+    '&': {write: 0, L: q_aceita}
+    
+  q_aceita:
+  
+  q_rejeita:
+
